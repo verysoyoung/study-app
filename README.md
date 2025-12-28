@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Study App (Frontend)
 
-## Getting Started
+스터디 참여자의 출석, 지각, 인증 상태를 관리하고  
+규칙 위반 시 벌금을 자동으로 집계하는 스터디 관리 웹 애플리케이션이다.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 주요 기능
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 스터디원 전체 현황 대시보드
+- 개인별 출석 / 지각 / 인증 기록 관리
+- 캘린더 기반 활동 이력 조회
+- YouTube URL 기반 인증 및 썸네일 미리보기
+- 이번 달 벌금 자동 집계
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 페이지 구성
 
-## Learn More
+### 홈 (Dashboard)
 
-To learn more about Next.js, take a look at the following resources:
+스터디 전체 현황을 한눈에 확인하는 메인 페이지입니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 스터디원 4명 전체 정보 표시
+- 각 스터디원별 정보
+  - 이름
+  - 지각 횟수
+  - 결석 횟수
+  - 인증 횟수
+  - 이번 달 누적 벌금
+- 모든 수치는 이번 달 기준으로 자동 계산됩니다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### 마이페이지 (My Page)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+개인별 상세 활동 이력을 확인하는 페이지입니다.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 사용자 기본 정보
+  - 이름
+  - 이번 달 지각 / 결석 / 인증 횟수
+  - 누적 벌금
+- 캘린더 뷰 제공
+  - 날짜별 출석 / 지각 / 결석 / 인증 상태 표시
+  - 날짜 클릭 시 상세 정보 확인
+    - 지각한 날짜
+    - 인증한 날짜
+    - 인증 미제출 날짜
+
+---
+
+### 발표 / 출석 인증 페이지
+
+스터디 규칙에 따른 발표 및 출석 인증 상태를 관리하는 페이지
+
+- 오늘 인증 상태 표시
+  - 인증 완료
+  - 미인증
+- 인증 유형 안내 (발표 인증, 출석 인증 등)
+- 인증 여부에 따라 상태가 즉시 반영된다.
+
+---
+
+### 인증하기 (Submit Verification)
+
+YouTube URL을 통해 인증을 제출하는 페이지
+
+- YouTube URL 입력
+- URL 입력 시 영상 썸네일 미리보기 표시
+- 별도 인증 절차 없이 제출 가능
+- 제출 완료 시 인증 상태 업데이트
+
+#### 인증 흐름
+
+1. YouTube URL 입력
+2. 인증 없이 제출
+3. 제출 성공 시 상태 업데이트
+
+---
+
+## UX / UI 포인트
+
+- 숫자 중심 대시보드로 스터디원 현황을 빠르게 파악
+- 캘린더 기반 UI로 기록을 직관적으로 확인 가능
+- 인증 과정은 입력 → 제출의 단순한 흐름
+- 스터디원 간 비교가 가능한 구조
+- 썸네일 미리보기
+
+---
+
+## 기술 스택
+
+- Framework: Next.js / React
+- State Management: React Query, Zustand
+- Styling: Tailwind CSS, shadcn
+- Calendar: FullCalendar 또는 커스텀 캘린더
+- Video Preview: YouTube 썸네일 기반 미리보기
+
+---
+
+## 향후 확장 아이디어
+
+- 벌금 정산 내역 다운로드
+- 미인증 알림 기능
+- 관리자 전용 페이지
