@@ -13,7 +13,7 @@ export default function Navigation() {
         <Link href="/add">
           <PlusIcon />
         </Link>
-        <Link href="/my:id">
+        <Link href={`/my/3333`}>
           <UserIcon />
         </Link>
       </nav>

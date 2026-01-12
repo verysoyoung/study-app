@@ -1,0 +1,46 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1024"
+  height="1024"
+  viewBox="0 0 1024 1024"
+>
+  <defs>
+    <style>
+      :root {
+        --bg: #0a0f1f;
+        --card: #111827;
+        --accent: #60a5fa;
+        --text: #e5e7eb;
+      }
+      .big {
+        font: 800 240px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          'Liberation Mono', monospace;
+        letter-spacing: -6px;
+      }
+    </style>
+  </defs>
+
+  <rect width="1024" height="1024" rx="220" fill="var(--bg)" />
+  <rect
+    x="140"
+    y="200"
+    width="744"
+    height="624"
+    rx="110"
+    fill="var(--card)"
+    stroke="var(--accent)"
+    stroke-width="18"
+  />
+
+  <!-- Centered code mark -->
+  <text
+    x="512"
+    y="512"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    fill="var(--text)"
+    class="big"
+  >
+    &lt;/&gt;
+  </text>
+</svg>
